@@ -1,9 +1,12 @@
-import Nav from "Nav.js";
+import Nav from "./Nav";
+
 const Header = () => {
   return (
-    <Header>
-      <img src="icon_assets/Logo.svg" alt="Little Lemon Logo"></img>
+    <header>
+      <img src="./icons_assets/Logo.svg" alt="Little Lemon Logo"></img>
       <Nav></Nav>
-    </Header>
+    </header>
   );
 };
+
+export default Header;

@@ -2,7 +2,7 @@ const Footer = () => {
   return (
     <footer>
       <div>
-        <img></img>
+        <img alt=""></img>
         <div></div>
         <div></div>
         <div></div>
@@ -10,3 +10,4 @@ const Footer = () => {
     </footer>
   );
 };
+export default Footer;
