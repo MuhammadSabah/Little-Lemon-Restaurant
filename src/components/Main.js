@@ -1,5 +1,11 @@
+import HeroSection from "./HeroSection";
+
 const Main = () => {
-  return <main></main>;
+  return (
+    <main>
+      <HeroSection />
+    </main>
+  );
 };
 
 export default Main;
