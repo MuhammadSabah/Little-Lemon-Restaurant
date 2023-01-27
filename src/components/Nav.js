@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { navLinks } from "../constants";
 
 const Nav = () => {
@@ -18,7 +19,17 @@ const Nav = () => {
               index === navLinks.length - 1 ? "mr-0" : "mr-8"
             }`}
           >
-            <a href={`#${nav.id}`}>{nav.title}</a>
+            <Link
+              to={
+                nav.title === "Home"
+                  ? "/"
+                  : "" || nav.title === "Reservations"
+                  ? "/booking"
+                  : ""
+              }
+            >
+              {nav.title}
+            </Link>
           </li>
         ))}
       </ul>

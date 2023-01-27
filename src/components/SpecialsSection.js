@@ -2,7 +2,7 @@ import SpecialFoodCard from "./SpecialFoodCard";
 
 const SpecialsSection = () => {
   return (
-    <section className="mt-[140px] w-[1100px] mr-auto ml-auto mb-[200px]">
+    <section className="mt-[140px] w-[1100px] mr-auto ml-auto ">
       <div className="text-7xl font-markazi  ">
         <div className="flex items-center justify-between">
           <h2 className="">This weeks specials!</h2>

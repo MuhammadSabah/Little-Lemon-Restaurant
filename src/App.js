@@ -1,13 +1,39 @@
-import Main from "./components/Main";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import { Routes, Route } from "react-router-dom";
+import BookingPage from "./pages/BookingPage";
+import HomePage from "./pages/HomePage";
+import { useReducer, useState } from "react";
+import { fetchAPI, submitAPI } from "./api/api";
+import { ConfirmedBookingPage } from "./pages/ConfirmedBookingPage";
 
 function App() {
+  const fetchData = (date) => {
+    return fetchAPI(date);
+  };
+
+  const updateTimes = (state, action) => {
+    if (action.newDate) {
+      return fetchData(action.newDate);
+    }
+    return state;
+  };
+
+  const initializeTimes = () => {
+    return fetchData(new Date());
+  };
+
+  const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
   return (
     <>
-      <Header></Header>
-      <Main></Main>
-      <Footer></Footer>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/booking"
+          element={
+            <BookingPage availableTimes={availableTimes} dispatch={dispatch} />
+          }
+        />
+        <Route path="/confirmed" element={<ConfirmedBookingPage />} />
+      </Routes>
     </>
   );
 }
