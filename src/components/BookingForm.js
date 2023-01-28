@@ -2,6 +2,7 @@ import { useState } from "react";
 import { submitAPI } from "../api/api";
 import { useNavigate } from "react-router-dom";
 import { ReservationSlot } from "./ReservationSlot";
+import { useForm } from "react-hook-form";
 
 export default function BookingForm({ availableTimes, dispatch }) {
   const navigate = useNavigate();
@@ -11,27 +12,29 @@ export default function BookingForm({ availableTimes, dispatch }) {
   let currDate = curr.toISOString().substring(0, 10);
   //
   const [date, setDate] = useState(currDate);
-  const [time, setTime] = useState();
-  const [numberOfGuests, setNumberOfGuests] = useState(1);
-  const [occasion, setOccasion] = useState("Birthday");
+  // const [time, setTime] = useState();
+  // const [numberOfGuests, setNumberOfGuests] = useState(1);
+  // const [occasion, setOccasion] = useState("Birthday");
   //
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Submitted!");
-    setDate(Date.now());
-    setTime("17.00");
-    setNumberOfGuests(1);
-    setOccasion("Birthday");
-    if (submitAPI("")) {
-      navigate("/confirmed");
-    }
+  const onSubmit = (data) => {
+    console.log(data);
+    submitAPI(data);
+    navigate("/confirmed");
   };
+
+  const { register, handleSubmit, errors } = useForm({
+    defaultValues: {
+      dateField: date,
+      occasionField: "Birthday",
+      guestsField: 1,
+    },
+  });
   //
   return (
     <div className="flex md:flex-row flex-col justify-center items-center lg:gap-[230px] gap-[40px] md:py-[60px] py-[30px] bg-gray-primary md:gap-[50px] md:px-[20px] lg:px-[0px]">
       <form
         className="grid md:max-w-[440px] gap-[20px]  "
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit(onSubmit)}
       >
         <h1 className="text-7xl text-yellow-primary font-markazi">
           Reservations
@@ -46,11 +49,13 @@ export default function BookingForm({ availableTimes, dispatch }) {
           className="shadow -mt-[12px]  border rounded h-[50px] w-[320px] focus:outline-none focus:shadow-outline py-2 px-3 text-black-highlight leading-tight"
           type="date"
           id="res-date"
-          value={date}
-          onChange={(e) => {
-            dispatch({ newDate: new Date(e.target.value) });
-            return setDate(e.target.value);
-          }}
+          {...register("dateField", {
+            required: true,
+            onChange: (e) => {
+              dispatch({ newDate: new Date(e.target.value) });
+              return setDate(e.target.value);
+            },
+          })}
         ></input>
         <label
           htmlFor="res-time"
@@ -61,8 +66,7 @@ export default function BookingForm({ availableTimes, dispatch }) {
         <select
           className="shadow -mt-[12px]  border rounded h-[50px]  w-[320px]  focus:outline-none focus:shadow-outline py-2 px-3 text-black-highlight leading-tight"
           id="res-time"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
+          {...register("timeField", { required: true })}
         >
           {availableTimes.map((time, index) => {
             return <option key={time}>{time}</option>;
@@ -81,8 +85,7 @@ export default function BookingForm({ availableTimes, dispatch }) {
           min="1"
           max="10"
           id="guests"
-          value={numberOfGuests}
-          onChange={(e) => setNumberOfGuests(e.target.value)}
+          {...register("guestsField", { required: true })}
         ></input>
         <label
           htmlFor="occasion"
@@ -93,11 +96,11 @@ export default function BookingForm({ availableTimes, dispatch }) {
         <select
           className="shadow -mt-[12px]  border rounded h-[50px]  w-[320px]  focus:outline-none focus:shadow-outline py-2 px-3  text-black-highlight leading-tight"
           id="occasion"
-          value={occasion}
-          onChange={(e) => setOccasion(e.target.value)}
+          {...register("occasionField", { required: true })}
         >
           <option>Birthday</option>
           <option>Anniversary</option>
+          <option>Other</option>
         </select>
         <button
           type="submit"
