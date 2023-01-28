@@ -28,9 +28,11 @@ export default function BookingForm({ availableTimes, dispatch }) {
   };
   //
   return (
-    <div className="flex justify-center items-center gap-[230px] py-[60px] bg-gray-primary ">
-      {/* <div className="w-[1100px] mr-auto ml-auto"></div> */}
-      <form className="grid max-w-[440px] gap-[20px]  " onSubmit={handleSubmit}>
+    <div className="flex md:flex-row flex-col justify-center items-center lg:gap-[230px] gap-[40px] md:py-[60px] py-[30px] bg-gray-primary md:gap-[50px] md:px-[20px] lg:px-[0px]">
+      <form
+        className="grid md:max-w-[440px] gap-[20px]  "
+        onSubmit={handleSubmit}
+      >
         <h1 className="text-7xl text-yellow-primary font-markazi">
           Reservations
         </h1>
@@ -104,11 +106,11 @@ export default function BookingForm({ availableTimes, dispatch }) {
           Make Your Reservation
         </button>
       </form>
-      <div>
-        <h2 className="text-2xl text-white-highlight font-semibold mb-[20px]">
+      <div className="md:px-[0px] px-[12px]">
+        <h2 className="text-2xl text-white-highlight font-semibold mb-[20px] md:text-left text-center md:mt-[0px] mt-[24px] ">
           Available Tables
         </h2>
-        <div className="grid gap-x-2 gap-y-4 grid-cols-4 max-h-[584px]">
+        <div className="grid gap-x-2 gap-y-4 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 max-h-[584px]">
           {availableTimes.map((time, index) => {
             console.log(time);
             return (

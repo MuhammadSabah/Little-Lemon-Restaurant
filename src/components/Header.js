@@ -2,7 +2,7 @@ import Nav from "./Nav";
 
 const Header = () => {
   return (
-    <header>
+    <header className="flex justify-center">
       <Nav></Nav>
     </header>
   );

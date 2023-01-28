@@ -2,17 +2,17 @@ import SpecialFoodCard from "./SpecialFoodCard";
 
 const SpecialsSection = () => {
   return (
-    <section className="mt-[140px] w-[1100px] mr-auto ml-auto ">
+    <section className="mt-[70px] lg:mt-[140px]   md:mt-[70px] lg:max-w-[1100px] md:max-w-[830px] mr-auto ml-auto px-[16px] md:px-[12px] lg:px-[0px] ">
       <div className="text-7xl font-markazi  ">
-        <div className="flex items-center justify-between">
-          <h2 className="">This weeks specials!</h2>
+        <div className="md:flex md:items-center md:justify-between">
+          <h2 className="text-5xl md:text-6xl">This weeks specials!</h2>
           <button className="hover:shadow-md hover:bg-yellow-300 transition-all duration-200 ease-in text-black-highlight font-bold text-xl bg-yellow-primary px-9 py-3.5 rounded-2xl font-karla mr-[14px]">
             Online Menu
           </button>
         </div>
       </div>
       <div className="mt-[40px]">
-        <div className="flex gap-12 ">
+        <div className="flex flex-col md:flex-row lg:gap-12  gap-6 ">
           <SpecialFoodCard
             foodName="Greek Salad"
             price="$12.99"
@@ -24,7 +24,7 @@ const SpecialsSection = () => {
           <SpecialFoodCard
             foodName="Bruchetta"
             price="$5.99"
-            description="Our Bruchetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil."
+            description="Our Bruchetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil Lorem ipsum jals."
             imageUrl="./icons_assets/bruchetta.svg"
           />
           <SpecialFoodCard

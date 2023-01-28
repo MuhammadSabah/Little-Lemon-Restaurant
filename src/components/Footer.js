@@ -1,10 +1,10 @@
 const Footer = () => {
   return (
-    <footer className=" mt-[90px]  bg-white-highlight">
-      <div className="w-[1100px] mr-auto ml-auto pb-[90px] pt-[90px] flex gap-[80px]">
-        <div className="w-[320px] ">
+    <footer className=" mt-[90px] bg-white-highlight">
+      <div className="lg:w-[1100px] mr-auto ml-auto pb-[90px] md:pt-[90px] px-[22px] lg:px-[0px] pt-[50px] flex flex-col md:flex-row md:gap-[9px] lg:gap-[80px] gap-[20px] md:px-[16px]">
+        <div className="w-[320px] order-2 md:order-1">
           <img
-            className="w-8/12"
+            className="md:w-8/12 w-6/12"
             alt="Little Lemon Restaurant Logo"
             src="./icons_assets/footer-logo.png"
           />
@@ -12,7 +12,7 @@ const Footer = () => {
             © 2023 Little Lemon. All rights reserved.
           </p>
         </div>
-        <div>
+        <div className="md:order-2">
           <h4 className="text-xl font-bold">Navigation</h4>
           <ul className="text-black-highlight mt-[12px] flex flex-col gap-y-2">
             <li className="hover:text-black cursor-pointer transition-all duration-200 ease-in">
@@ -35,7 +35,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div>
+        <div className="md:order-3">
           <h4 className="text-xl font-bold">Contact</h4>
           <ul className="text-black-highlight mt-[12px] flex flex-col gap-y-2">
             <li className="hover:text-black cursor-pointer transition-all duration-200 ease-in">
@@ -49,7 +49,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div>
+        <div className="md:order-4 mb-[25px] md:mb-[0px]">
           <h4 className="text-xl font-bold">Social Media Links</h4>
           <ul className="text-black-highlight mt-[12px] flex flex-col gap-y-2">
             <li className="hover:text-black cursor-pointer transition-all duration-200 ease-in">

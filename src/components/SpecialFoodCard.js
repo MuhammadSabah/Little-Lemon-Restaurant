@@ -7,7 +7,7 @@ export default function SpecialFoodCard({
   imageUrl,
 }) {
   return (
-    <div className="w-[330px] h-[600px] bg-white-highlight rounded-tr-2xl rounded-tl-2xl overflow-hidden">
+    <div className="w-[330px] md:h-[640px] lg:h-[600px] bg-white-highlight rounded-tr-2xl rounded-tl-2xl overflow-hidden">
       <div className="overflow-hidden">
         <img
           className="w-1/1 h-[280px] object-cover hover:scale-110 transition duration-300"
@@ -21,7 +21,7 @@ export default function SpecialFoodCard({
           <span className="text-pink-secondary font-semibold">{price}</span>
         </div>
         <p className="text-left text-black-highlight ">{description}</p>
-        <span className="font-bold mt-7 mb-4 cursor-pointer w-fit">
+        <span className="font-bold mt-7  mb-4 cursor-pointer w-fit">
           Order a delivery
           <FontAwesomeIcon className="ml-[10px]" icon={faTruck} />
         </span>
