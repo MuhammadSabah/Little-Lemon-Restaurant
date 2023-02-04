@@ -11,6 +11,8 @@ export default function BookingForm({ availableTimes, dispatch }) {
   curr.setDate(curr.getDate());
   let currDate = curr.toISOString().substring(0, 10);
   //
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
   const [date, setDate] = useState(currDate);
   // const [time, setTime] = useState();
   // const [numberOfGuests, setNumberOfGuests] = useState(1);
@@ -22,8 +24,14 @@ export default function BookingForm({ availableTimes, dispatch }) {
     navigate("/confirmed");
   };
 
-  const { register, handleSubmit, errors } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
+      fullNameField: fullName,
+      emailField: email,
       dateField: date,
       occasionField: "Birthday",
       guestsField: 1,
@@ -39,6 +47,44 @@ export default function BookingForm({ availableTimes, dispatch }) {
         <h1 className="text-7xl text-yellow-primary font-markazi">
           Reservations
         </h1>
+        <label
+          htmlFor="full-name"
+          className="font-semibold text-xl text-white-highlight"
+        >
+          Full Name
+        </label>
+        <input
+          className="shadow -mt-[12px]  border rounded h-[50px] w-[320px] focus:outline-none focus:shadow-outline py-0 px-3 text-black-highlight leading-tight"
+          type="text"
+          id="full-name"
+          placeholder="Full Name"
+          {...register("fullNameField", {
+            required: "Required",
+            onChange: (e) => setFullName(e.target.value),
+          })}
+        />
+        {errors.fullNameField && (
+          <p className="text-red-500">{errors.fullNameField.message}</p>
+        )}
+        <label
+          htmlFor="email"
+          className="font-semibold text-xl text-white-highlight"
+        >
+          Email
+        </label>
+        <input
+          className="shadow -mt-[12px]  border rounded h-[50px] w-[320px] focus:outline-none focus:shadow-outline py-0 px-3 text-black-highlight leading-tight"
+          type="email"
+          id="email"
+          placeholder="example@email.com"
+          {...register("emailField", {
+            required: "Required",
+            onChange: (e) => setEmail(e.target.value),
+          })}
+        />
+        {errors.emailField && (
+          <p className="text-red-500">{errors.emailField.message}</p>
+        )}
         <label
           htmlFor="res-date"
           className="font-semibold text-xl text-white-highlight"
@@ -115,7 +161,6 @@ export default function BookingForm({ availableTimes, dispatch }) {
         </h2>
         <div className="grid gap-x-2 gap-y-4 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 max-h-[584px]">
           {availableTimes.map((time, index) => {
-            console.log(time);
             return (
               <ReservationSlot key={time} time={time}>
                 {time}

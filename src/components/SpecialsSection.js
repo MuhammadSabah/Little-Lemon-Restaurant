@@ -25,7 +25,7 @@ const SpecialsSection = () => {
             foodName="Bruchetta"
             price="$5.99"
             description="Our Bruchetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil Lorem ipsum jals."
-            imageUrl="./icons_assets/bruchetta.svg"
+            imageUrl="./icons_assets/bruchetta.jpg"
           />
           <SpecialFoodCard
             foodName="Lemon Dessert"
