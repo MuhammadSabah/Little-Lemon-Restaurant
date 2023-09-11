@@ -1,9 +1,9 @@
-import { useState } from "react";
+
 import { Link } from "react-router-dom";
 import { navLinks } from "../constants";
 
 const Nav = () => {
-  const [toggle, setToggle] = useState(false);
+
   return (
     <nav className=" max-w-[1100px] w-[1100px]   flex py-6 justify-between  items-center ">
       <img

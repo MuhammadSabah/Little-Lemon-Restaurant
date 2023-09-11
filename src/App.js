@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import BookingPage from "./pages/BookingPage";
 import HomePage from "./pages/HomePage";
-import { useReducer, useState } from "react";
-import { fetchAPI, submitAPI } from "./api/api";
+import { useReducer} from "react";
+import { fetchAPI } from "./api/api";
 import { ConfirmedBookingPage } from "./pages/ConfirmedBookingPage";
 
 function App() {
